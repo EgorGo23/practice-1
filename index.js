@@ -140,3 +140,15 @@ const toBool = (value) => !!value;
 // console.log(toBool(nul));
 // console.log(toBool(undef));
 // console.log(toBool(nan));
+
+
+const toObj = (value) => Object(value);
+// console.log(toObj(num));
+// console.log(toObj(bool));
+// console.log(toObj(str));
+// console.log(toObj(obj));
+// console.log(toObj(sym));
+// console.log(toObj());
+// console.log(toObj(nul));
+// console.log(toObj(undef));
+// console.log(toObj(nan));
