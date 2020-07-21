@@ -1,17 +1,19 @@
-const num = 12;
-const bool = true;
-const str = '123';
-const nul = null;
-const undef = undefined;
-const obj = {a: 1, b: '2'};
-const sym = Symbol('name');
-const nan = NaN;
+var num = 12;
+var bool = true;
+var str = '123';
+var nul = null;
+var undef = undefined;
+var obj = {a: 1, b: '2'};
+var sym = Symbol('name');
+var nan = NaN;
 
 /*
  First Part
 */
 
-const isString = (value) => typeof value === 'string';
+function isString(value) {
+    return typeof value === 'string';
+};
 // console.log(isString(num));
 // console.log(isString(undef));
 // console.log(isString(bool));
@@ -22,7 +24,9 @@ const isString = (value) => typeof value === 'string';
 // console.log(isString(nan));
 // console.log(isString());
 
-const isNumber = (value) => typeof value === 'number' && !isNaN(value); 
+function isNumber(value) {
+    return typeof value === 'number' && !isNaN(value);
+}
 // console.log(isNumber(num));
 // console.log(isNumber(undef));
 // console.log(isNumber(bool));
@@ -33,7 +37,9 @@ const isNumber = (value) => typeof value === 'number' && !isNaN(value);
 // console.log(isNumber(nan));
 // console.log(isNumber());
 
-const isNan = (value) => typeof value !== 'symbol' && typeof value === 'number' && isNaN(value);
+function isNan(value) {
+    return typeof value !== 'symbol' && typeof value === 'number' && isNaN(value);
+} 
 // console.log(isNan(nan));
 // console.log(isNan(num));
 // console.log(isNan(undef));
@@ -44,7 +50,10 @@ const isNan = (value) => typeof value !== 'symbol' && typeof value === 'number' 
 // console.log(isNan(sym));
 // console.log(isNan());
 
-const isBool = (value) => typeof value === 'boolean';
+
+function isBool(value) {
+    return typeof value === 'boolean';
+}
 // console.log(isBool(num));
 // console.log(isBool(undef));
 // console.log(isBool(bool));
@@ -55,7 +64,9 @@ const isBool = (value) => typeof value === 'boolean';
 // console.log(isBool());
 
 
-const isNull = (value) => value === null;
+function isNull(value) {
+    return value === null;
+}
 // console.log(isNull(num));
 // console.log(isNull(undef));
 // console.log(isNull(bool));
@@ -66,7 +77,9 @@ const isNull = (value) => value === null;
 // console.log(isNull());
 
 
-const isUndef = (value) => typeof value === 'undefined';
+function isUndef(value) {
+    return typeof value === 'undefined';
+}
 // console.log(isUndef(nan));
 // console.log(isUndef(num));
 // console.log(isUndef(undef));
@@ -78,7 +91,9 @@ const isUndef = (value) => typeof value === 'undefined';
 // console.log(isUndef());
 
 
-const isSymb = (value) => typeof value === 'symbol';
+function isSymb(value) {
+    return typeof value === 'symbol';
+}
 // console.log(isSymb(nan));
 // console.log(isSymb(num));
 // console.log(isSymb(undef));
@@ -90,7 +105,9 @@ const isSymb = (value) => typeof value === 'symbol';
 // console.log(isSymb());
 
 
-const isObj = (value) => value !== null && typeof value === 'object';
+function isObj(value) {
+    return value !== null && typeof value === 'object';
+} 
 // console.log(isObj(nan));
 // console.log(isObj(num));
 // console.log(isObj(undef));
@@ -106,8 +123,13 @@ const isObj = (value) => value !== null && typeof value === 'object';
  Second Part
 */
 
-
-const toNumber = (value = 0) => isSymb(value) || isNan(value) || isObj(value) || isUndef(value) ? 0 : Number(value);
+function toNumber(value) {
+    value = value || 0;
+    return isSymb(value) 
+        || isNan(value) 
+            || isObj(value) 
+                || isUndef(value) ? 0 : Number(value);
+}
 // console.log(toNumber(num));
 // console.log(toNumber(bool));
 // console.log(toNumber(str));
@@ -118,7 +140,16 @@ const toNumber = (value = 0) => isSymb(value) || isNan(value) || isObj(value) ||
 // console.log(toNumber(undef));
 // console.log(toNumber(nan));
 
-const toStr = (value = '') => isSymb(value) || isNan(value) || isObj(value) || isNull(value) || isUndef(value) ? '' : String(value);
+
+
+function toStr(value) {
+    value = value || '';
+    return isSymb(value) 
+        || isNan(value) 
+            || isObj(value) 
+                || isNull(value) 
+                    || isUndef(value) ? '' : String(value);
+}
 // console.log(toStr(num));
 // console.log(toStr(bool));
 // console.log(toStr(str));
@@ -130,7 +161,10 @@ const toStr = (value = '') => isSymb(value) || isNan(value) || isObj(value) || i
 // console.log(toStr(nan));
 
 
-const toBool = (value) => !!value;
+
+function toBool(value) {
+    return !!value;
+}
 // console.log(toBool(num));
 // console.log(toBool(bool));
 // console.log(toBool(str));
@@ -142,7 +176,10 @@ const toBool = (value) => !!value;
 // console.log(toBool(nan));
 
 
-const toObj = (value) => Object(value);
+
+function toObj(value) {
+    return Object(value);
+} 
 // console.log(toObj(num));
 // console.log(toObj(bool));
 // console.log(toObj(str));
